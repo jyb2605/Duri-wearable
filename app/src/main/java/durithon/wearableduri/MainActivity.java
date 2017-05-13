@@ -19,7 +19,16 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import android.content.Intent;
+import android.media.MediaPlayer;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+
 public class MainActivity extends AppCompatActivity {
+    static Netty_DuriClient netty;
+    static MediaPlayer mediaPlayer;
+    public static char ascii = (char)0x2593;
 
     //gps 정보 받기
     private LocationManager mLocationManager;
@@ -35,10 +44,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
+
+        netty = new Netty_DuriClient(this);
+        netty.start();
+
+
         if (!gpsIsOpen())
             return;
 
         get_gps();
+
+
+        Intent serviceIntent = new Intent(this , ShakeService.class);
+        this.startService(serviceIntent);
+        new MusicListUtil();
+
+        MusicListUtil.current_check=true;
+        mediaPlayer = MediaPlayer.create(this , MusicListUtil.신나는음악리스트.get(0).sound);
+        mediaPlayer.start(); // no need to call prepare() ; create() does that for you
+
+
 
     }
 
@@ -86,6 +113,12 @@ public class MainActivity extends AppCompatActivity {
         mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
         mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
         //mLocationManager.requestLocationUpdates(provider, 3 * 1000, 0, locationListener);
+
+
+
+
+
+
     }
 
 
@@ -109,7 +142,8 @@ public class MainActivity extends AppCompatActivity {
 
 
       //Toast.makeText(MainActivity.this, "lat : " + location.getLatitude() + "long"+ location.getLongitude(), Toast.LENGTH_SHORT).show();
-        Log.d("gps","lat : " + Lat + "long"+ Lon);
+                  Log.d("gps","lat : " + Lat + "long"+ Lon);
+                MainActivity.netty.sendmessage("latlon"+MainActivity.ascii+String.valueOf(Lat)+MainActivity.ascii+String.valueOf(Lon));
             }
 
         }
