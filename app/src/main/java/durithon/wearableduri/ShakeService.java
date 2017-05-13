@@ -65,9 +65,7 @@ public class ShakeService extends Service implements SensorEventListener {
                         * 10000;
                 if (speed > SHAKE_THRESHOLD) {
                     Log.e("걸음 수", String.valueOf(cnt));
-
-
-
+                    MainActivity.netty.sendmessage(String.valueOf(cnt));
                     cnt++;
                 }
                 lastX = event.values[DATA_X];
