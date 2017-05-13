@@ -23,7 +23,9 @@ public class MainActivity extends AppCompatActivity {
 
         MusicListUtil.current_check=true;
         mediaPlayer = MediaPlayer.create(this , MusicListUtil.신나는음악리스트.get(0).sound);
-        mediaPlayer.start(); // no need to call prepare(); create() does that for you
+        mediaPlayer.start(); // no need to call prepare() ; create() does that for you
+
+
 
 
 
