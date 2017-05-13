@@ -53,6 +53,15 @@ public class MusicListUtil {
         }
     }
 
+    public static void beforeSong(Context con) {
+        current_check=true;
+        if (--MusicListUtil.current_music < 0) {
+            MusicListUtil.current_music = MusicListUtil.신나는음악리스트.size();
+        } else {
+            playSong(MusicListUtil.신나는음악리스트.get(MusicListUtil.current_music).sound, con);
+        }
+    }
+
     public static void stopSong() {
         current_check=false;
         if(MainActivity.mediaPlayer!=null){
