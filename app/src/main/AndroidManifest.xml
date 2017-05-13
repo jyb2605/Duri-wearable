@@ -18,6 +18,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service
+            android:name=".ShakeService"
+            >
+            <intent-filter>
+                <action android:name="durithon.wearableduri.ShakeService"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
