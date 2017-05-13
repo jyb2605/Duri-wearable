@@ -27,14 +27,38 @@ public class MusicListUtil {
         서버노래추가();
     }
 
-    public static void playSong(int songPath, final Context con) {
+    public static void playSong(int song_path,  final Context con) {
         current_check=true;
         MainActivity.mediaPlayer.reset();
         // mp객체를 초기화합니다.
         MainActivity.mediaPlayer.release();
         MainActivity.mediaPlayer = null;
         MainActivity.mediaPlayer = new MediaPlayer();
-        MainActivity.mediaPlayer = MediaPlayer.create(con, songPath);
+        MainActivity.mediaPlayer = MediaPlayer.create(con, MusicListUtil.신나는음악리스트.get(current_music).sound);
+        MainActivity.mediaPlayer.start();
+        // 한 곡의 재생이 끝나면 다음 곡을 재생하도록 합니다.
+        MainActivity.mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            public void onCompletion(MediaPlayer arg0) {
+                nextSong(con);
+            }
+        });
+    }
+
+    public static void startSong(final Context con, String song_name) {
+        current_check=true;
+        MainActivity.mediaPlayer.reset();
+        // mp객체를 초기화합니다.
+        MainActivity.mediaPlayer.release();
+        MainActivity.mediaPlayer = null;
+        MainActivity.mediaPlayer = new MediaPlayer();
+
+        for(int i=0; i<신나는음악리스트.size(); i++){
+            if(song_name.equals(MusicListUtil.신나는음악리스트.get(i).title)){
+                current_music = i;
+            }
+        }
+
+        MainActivity.mediaPlayer = MediaPlayer.create(con, MusicListUtil.신나는음악리스트.get(current_music).sound);
         MainActivity.mediaPlayer.start();
         // 한 곡의 재생이 끝나면 다음 곡을 재생하도록 합니다.
         MainActivity.mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {

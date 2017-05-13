@@ -47,7 +47,7 @@ public class Netty_DuriHandler extends SimpleChannelInboundHandler<ByteBuf> {
              */
             case "interestStart":
                 //content = 녹음파일 포지션값
-                MusicListUtil.nextSong(context);
+                MusicListUtil.startSong(context, buffer1);
                 break;
             case "interestResume":
                 //content = 녹음파일 포지션값
@@ -61,7 +61,7 @@ public class Netty_DuriHandler extends SimpleChannelInboundHandler<ByteBuf> {
 
             case "sleepyStart":
                 //content = 녹음파일 포지션값
-                MusicListUtil.nextSong(context);
+                MusicListUtil.startSong(context, buffer1);
                 break;
             case "sleepyResume":
                 //content = 녹음파일 포지션값
@@ -75,7 +75,7 @@ public class Netty_DuriHandler extends SimpleChannelInboundHandler<ByteBuf> {
 
             case "anxietyStart":
                 //content = 녹음파일 포지션값
-                MusicListUtil.nextSong(context);
+                MusicListUtil.startSong(context, buffer1);
                 break;
             case "anxietyResume":
                 //content = 녹음파일 포지션값
@@ -89,7 +89,7 @@ public class Netty_DuriHandler extends SimpleChannelInboundHandler<ByteBuf> {
 
             case "sadStart":
                 //content = 녹음파일 포지션값
-                MusicListUtil.nextSong(context);
+                MusicListUtil.startSong(context, buffer1);
                 break;
             case "sadResume":
                 //content = 녹음파일 포지션값

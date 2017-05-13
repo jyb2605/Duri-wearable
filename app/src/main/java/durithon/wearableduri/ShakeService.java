@@ -72,7 +72,7 @@ public class ShakeService extends Service implements SensorEventListener {
 //                        MusicListUtil.stopSong();
 //                    }
 //                    else {
-//                        MusicListUtil.resumeSong();
+//                        MusicListUtil.r   esumeSong();
 //                    }
                 }
                 lastX = event.values[DATA_X];
