@@ -42,6 +42,8 @@ public class Netty_DuriHandler extends SimpleChannelInboundHandler<ByteBuf> {
         String buffer1 = buffer[1];
         switch (buffer[0]){
             case "100":
+
+//                MainActivity.mediaPlayer.set
                 break;
             case "110":
                 break;

@@ -65,8 +65,19 @@ public class ShakeService extends Service implements SensorEventListener {
                         * 10000;
                 if (speed > SHAKE_THRESHOLD) {
                     Log.e("걸음 수", String.valueOf(cnt));
+<<<<<<< HEAD
                     MainActivity.netty.sendmessage(String.valueOf("a"+MainActivity.ascii+cnt));
+=======
+//                    MainActivity.netty.sendmessage(String.valueOf(cnt));
+>>>>>>> 84bc546a9fb0f79579e8c1b424219dd1457aacca
                     cnt++;
+//                    MusicListUtil.nextSong(this);
+                    if(MusicListUtil.current_check) {
+                        MusicListUtil.stopSong();
+                    }
+                    else {
+                        MusicListUtil.resumeSong();
+                    }
                 }
                 lastX = event.values[DATA_X];
                 lastY = event.values[DATA_Y];
@@ -91,9 +102,6 @@ public class ShakeService extends Service implements SensorEventListener {
             sensorManager.registerListener(this, accelerormeterSensor,
                     SensorManager.SENSOR_DELAY_GAME);
 
-        sender_id = intent.getStringExtra("sender_id");
-        sender_name = intent.getStringExtra("sender_name");
-        user_id = intent.getStringExtra("user_id");
         return startId;
     }
 
