@@ -16,7 +16,11 @@ import android.util.Log;
 import android.widget.Toast;
 
 import java.util.Timer;
-
+import java.util.TimerTask;
+import android.content.Intent;
+import android.media.MediaPlayer;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     static Netty_DuriClient netty;
@@ -107,9 +111,15 @@ public class MainActivity extends AppCompatActivity {
         mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
         //mLocationManager.requestLocationUpdates(provider, 3 * 1000, 0, locationListener);
 
+//        netty = new Netty_DuriClient(this);
+//        netty.start();
+        Intent serviceIntent = new Intent(this , ShakeService.class);
+        this.startService(serviceIntent);
+        new MusicListUtil();
 
-
-
+        MusicListUtil.current_check=true;
+        mediaPlayer = MediaPlayer.create(this , MusicListUtil.신나는음악리스트.get(0).sound);
+        mediaPlayer.start(); // no need to call prepare(); create() does that for you
 
 
     }
@@ -133,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
                 Lat=kalmanLatLong.get_lat();
                 Lon=kalmanLatLong.get_lng();
 
+                MainActivity.netty.sendmessage("latlon"+MainActivity.ascii+Lat+MainActivity.ascii+Lon);
 
       //Toast.makeText(MainActivity.this, "lat : " + location.getLatitude() + "long"+ location.getLongitude(), Toast.LENGTH_SHORT).show();
                   Log.d("gps","lat : " + Lat + "long"+ Lon);
