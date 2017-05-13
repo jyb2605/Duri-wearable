@@ -1,7 +1,17 @@
 package durithon.wearableduri;
+
+import android.content.Context;
+import android.media.MediaPlayer;
+
 import java.util.ArrayList;
 
 public class MusicListUtil {
+
+    static int current_music = 0;
+    static boolean current_check = false;
+    static int length = 0;
+
+    public static String RES_PREFIX = "android.resource://com.my.package/";
 
     public static ArrayList<Data> 신나는음악리스트 = new ArrayList<Data>();
     public static ArrayList<Data> 평린교회에등록된음악리스트 = new ArrayList<Data>();
@@ -16,6 +26,51 @@ public class MusicListUtil {
         내노래추가();
         서버노래추가();
     }
+
+    public static void playSong(int songPath, final Context con) {
+        current_check=true;
+        MainActivity.mediaPlayer.reset();
+        // mp객체를 초기화합니다.
+        MainActivity.mediaPlayer.release();
+        MainActivity.mediaPlayer = null;
+        MainActivity.mediaPlayer = new MediaPlayer();
+        MainActivity.mediaPlayer = MediaPlayer.create(con, songPath);
+        MainActivity.mediaPlayer.start();
+        // 한 곡의 재생이 끝나면 다음 곡을 재생하도록 합니다.
+        MainActivity.mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            public void onCompletion(MediaPlayer arg0) {
+                nextSong(con);
+            }
+        });
+    }
+
+    public static void nextSong(Context con) {
+        current_check=true;
+        if (++MusicListUtil.current_music >= MusicListUtil.신나는음악리스트.size()) {
+            MusicListUtil.current_music = 0;
+        } else {
+            playSong(MusicListUtil.신나는음악리스트.get(MusicListUtil.current_music).sound, con);
+        }
+    }
+
+    public static void stopSong() {
+        current_check=false;
+        if(MainActivity.mediaPlayer!=null){
+            MainActivity.mediaPlayer.pause();
+            length=MainActivity.mediaPlayer.getCurrentPosition();
+        }
+    }
+
+    public static void resumeSong() {
+        current_check=true;
+        if(MainActivity.mediaPlayer!=null){
+            MainActivity.mediaPlayer.seekTo(length);
+            MainActivity.mediaPlayer.start();
+        }
+    }
+
+
+
 
     void 위워크노래추가(){
         신나는음악리스트.add(new Data(R.drawable.p025, "소원", "어반자카파", true, 34, false , R.raw.m025wish ,false));
