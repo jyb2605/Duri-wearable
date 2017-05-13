@@ -14,6 +14,7 @@ public class Netty_DuriHandler extends SimpleChannelInboundHandler<ByteBuf> {
 
     private Context context;
 
+
     public Netty_DuriHandler(Context context){
         this.context = context;
     }
@@ -22,7 +23,6 @@ public class Netty_DuriHandler extends SimpleChannelInboundHandler<ByteBuf> {
     public void channelActive(final ChannelHandlerContext ctx) {
 
     }
-
     @Override
     public void channelRead0(ChannelHandlerContext ctx, ByteBuf buf) throws Exception {
         // Send the received message to all channels but the current one.
@@ -35,24 +35,18 @@ public class Netty_DuriHandler extends SimpleChannelInboundHandler<ByteBuf> {
             bytemsg[i] = buf.getByte(i);
         }
         String str = new String(bytemsg, "UTF-8");
-
         Log.d("handlerString",""+str);
 
         String[] buffer = str.split(String.valueOf(MainActivity.ascii),2);
 
         String buffer1 = buffer[1];
         switch (buffer[0]){
-
             case "100":
-
                 break;
-
             case "110":
                 break;
-
             case "111":
                 break;
-
             case "112":
                 break;
         }

@@ -20,7 +20,7 @@ import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
 public class Netty_DuriClient extends Thread {
 
     static final String HOST = System.getProperty("host", "52.78.208.219");
-    static final int PORT = Integer.parseInt(System.getProperty("port", "8888"));
+    static final int PORT = Integer.parseInt(System.getProperty("port", "6700"));
     private static Channel ch;
     private Context context;
 
