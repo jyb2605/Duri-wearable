@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent serviceIntent = new Intent(this , ShakeService.class);
         this.startService(serviceIntent);
-
+        new MusicListUtil();
 
 
 

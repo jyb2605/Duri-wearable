@@ -12,7 +12,7 @@ public class Data extends AppCompatActivity {
     public int sound;
     public boolean alpha;
     public String tag;
-    public Data(int image, String title, String artist, boolean hart, int hartcount, boolean now_play, int sound, boolean alpha, String tag){
+    public Data(int image, String title, String artist, boolean hart, int hartcount, boolean now_play, int sound, boolean alpha){
         this.image = image;
         this.title = title;
         this.artist = artist;
@@ -21,7 +21,7 @@ public class Data extends AppCompatActivity {
         this.sound = sound;
         this.now_play = now_play;
         this.alpha = alpha;
-        this.tag= tag;
+//        this.tag= tag;
 
     }
 
