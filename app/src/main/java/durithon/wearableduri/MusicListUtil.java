@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class MusicListUtil {
 
-    public static ArrayList<Data> 위워크에등록된음악리스트 = new ArrayList<Data>();
+    public static ArrayList<Data> 신나는음악리스트 = new ArrayList<Data>();
     public static ArrayList<Data> 평린교회에등록된음악리스트 = new ArrayList<Data>();
     public static ArrayList<Data> SK건설에등록된음악리스트 = new ArrayList<Data>();
     public static ArrayList<Data> 내가등록한음악리스트 = new ArrayList<Data>();
@@ -18,12 +18,12 @@ public class MusicListUtil {
     }
 
     void 위워크노래추가(){
-        위워크에등록된음악리스트.add(new Data(R.drawable.p025, "소원", "어반자카파", true, 34, false , R.raw.m025wish ,false));
-        위워크에등록된음악리스트.add(new Data(R.drawable.p026, "널 생각해", "원 모어 찬스", true, 40, false , R.raw.m026ithinku ,false));
-        위워크에등록된음악리스트.add(new Data(R.drawable.p027, "백색소음", "자연의 소리", true, 18, false , R.raw.m027whitenoise ,false));
-        위워크에등록된음악리스트.add(new Data(R.drawable.p028, "너였다면", "정승환", true, 7, false , R.raw.m028ifiamdyou ,false));
-        위워크에등록된음악리스트.add(new Data(R.drawable.p029, "월광 1악장", "베토벤 교향곡", true,44, false , R.raw.m029beethoven ,false));
-        위워크에등록된음악리스트.add(new Data(R.drawable.p030, "Lazenca, Save Us", "하현우", true,49, false , R.raw.m030lazenca ,false));
+        신나는음악리스트.add(new Data(R.drawable.p025, "소원", "어반자카파", true, 34, false , R.raw.m025wish ,false));
+        신나는음악리스트.add(new Data(R.drawable.p026, "널 생각해", "원 모어 찬스", true, 40, false , R.raw.m026ithinku ,false));
+        신나는음악리스트.add(new Data(R.drawable.p027, "백색소음", "자연의 소리", true, 18, false , R.raw.m027whitenoise ,false));
+        신나는음악리스트.add(new Data(R.drawable.p028, "너였다면", "정승환", true, 7, false , R.raw.m028ifiamdyou ,false));
+        신나는음악리스트.add(new Data(R.drawable.p029, "월광 1악장", "베토벤 교향곡", true,44, false , R.raw.m029beethoven ,false));
+        신나는음악리스트.add(new Data(R.drawable.p030, "Lazenca, Save Us", "하현우", true,49, false , R.raw.m030lazenca ,false));
     }
     void 평린교회노래추가(){
         평린교회에등록된음악리스트.add(new Data(R.drawable.p020, "벚꽃엔딩", "버스커 버스커", true, 6, false , R.raw.m020sakuraending ,false));
