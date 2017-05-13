@@ -38,7 +38,7 @@ public class Netty_DuriHandler extends SimpleChannelInboundHandler<ByteBuf> {
 
         Log.d("handlerString",""+str);
 
-        String[] buffer = str.split(String.valueOf(SplashActivity.ascii),2);
+        String[] buffer = str.split(String.valueOf(MainActivity.ascii),2);
 
         String buffer1 = buffer[1];
         switch (buffer[0]){

@@ -6,6 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    
+
+    public static char ascii = (char)0x2593;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -14,6 +18,9 @@ public class MainActivity extends AppCompatActivity {
         Intent serviceIntent = new Intent(this , ShakeService.class);
         this.startService(serviceIntent);
         new MusicListUtil();
+
+
+
 
 
 
