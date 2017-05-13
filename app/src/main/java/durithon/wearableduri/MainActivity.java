@@ -2,27 +2,20 @@ package durithon.wearableduri;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.Handler;
-import android.os.Message;
+import android.media.MediaPlayer;
+import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import java.util.Date;
 import java.util.Timer;
-import java.util.TimerTask;
-
-import android.content.Intent;
-import android.media.MediaPlayer;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -61,9 +54,9 @@ public class MainActivity extends AppCompatActivity {
         this.startService(serviceIntent);
         new MusicListUtil();
 
-        MusicListUtil.current_check=true;
-        mediaPlayer = MediaPlayer.create(this , MusicListUtil.신나는음악리스트.get(0).sound);
-        mediaPlayer.start(); // no need to call prepare() ; create() does that for you
+//        MusicListUtil.current_check=true;
+//        mediaPlayer = MediaPlayer.create(this , MusicListUtil.신나는음악리스트.get(0).sound);
+//        mediaPlayer.start(); // no need to call prepare() ; create() does that for you
 
 
 

@@ -67,7 +67,7 @@ public class ShakeService extends Service implements SensorEventListener {
                     Log.e("걸음 수", String.valueOf(cnt));
                     MainActivity.netty.sendmessage("a"+MainActivity.ascii+String.valueOf(cnt));
                     cnt++;
-                    MusicListUtil.nextSong(this);
+//                    MusicListUtil.nextSong(this);
 //                    if(MusicListUtil.current_check) {
 //                        MusicListUtil.stopSong();
 //                    }

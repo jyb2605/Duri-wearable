@@ -12,7 +12,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
  */
 public class Netty_DuriHandler extends SimpleChannelInboundHandler<ByteBuf> {
 
-    private Context context;
+    Context context;
 
 
     public Netty_DuriHandler(Context context){
@@ -44,46 +44,60 @@ public class Netty_DuriHandler extends SimpleChannelInboundHandler<ByteBuf> {
 
             /*
               음악재생 프로토콜
-
              */
             case "interestStart":
                 //content = 녹음파일 포지션값
-
+                MusicListUtil.nextSong(context);
+                break;
+            case "interestResume":
+                //content = 녹음파일 포지션값
+                MusicListUtil.resumeSong();
                 break;
 
             case "interestStop":
                 //content = 녹음파일 포지션값
-
+                MusicListUtil.stopSong();
                 break;
 
             case "sleepyStart":
                 //content = 녹음파일 포지션값
-
+                MusicListUtil.nextSong(context);
+                break;
+            case "sleepyResume":
+                //content = 녹음파일 포지션값
+                MusicListUtil.resumeSong();
                 break;
 
             case "sleepyStop":
                 //content = 녹음파일 포지션값
-
+                MusicListUtil.stopSong();
                 break;
 
             case "anxietyStart":
                 //content = 녹음파일 포지션값
-
+                MusicListUtil.nextSong(context);
+                break;
+            case "anxietyResume":
+                //content = 녹음파일 포지션값
+                MusicListUtil.resumeSong();
                 break;
 
             case "anxietyStop":
                 //content = 녹음파일 포지션값
-
+                MusicListUtil.stopSong();
                 break;
 
             case "sadStart":
                 //content = 녹음파일 포지션값
-
+                MusicListUtil.nextSong(context);
                 break;
-
+            case "sadResume":
+                //content = 녹음파일 포지션값
+                MusicListUtil.resumeSong();
+                break;
             case "sadStop":
                 //content = 녹음파일 포지션값
-
+                MusicListUtil.stopSong();
                 break;
 
 
