@@ -46,10 +46,12 @@ public class MusicListUtil {
 
     public static void startSong(final Context con, String song_name) {
         current_check=true;
+
         MainActivity.mediaPlayer.reset();
         // mp객체를 초기화합니다.
         MainActivity.mediaPlayer.release();
         MainActivity.mediaPlayer = null;
+
         MainActivity.mediaPlayer = new MediaPlayer();
 
         for(int i=0; i<신나는음악리스트.size(); i++){

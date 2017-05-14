@@ -14,6 +14,7 @@ public class Netty_DuriHandler extends SimpleChannelInboundHandler<ByteBuf> {
 
     Context context;
 
+    //final static String SENDMESAGGE = "passMessage";
 
     public Netty_DuriHandler(Context context){
         this.context = context;
@@ -39,7 +40,7 @@ public class Netty_DuriHandler extends SimpleChannelInboundHandler<ByteBuf> {
 
         String[] buffer = str.split(String.valueOf(MainActivity.ascii),2);
 
-        String buffer1 = buffer[1];
+        final String buffer1 = buffer[1];
         switch (buffer[0]){
 
             /*
@@ -48,59 +49,19 @@ public class Netty_DuriHandler extends SimpleChannelInboundHandler<ByteBuf> {
             case "interestStart":
                 //content = 녹음파일 포지션값
                 MusicListUtil.startSong(context, buffer1);
+//                passMessageToActivity("start");
                 break;
             case "interestResume":
                 //content = 녹음파일 포지션값
                 MusicListUtil.resumeSong();
-                break;
+//                passMessageToActivity("resume");
 
+                break;
             case "interestStop":
-                //content = 녹음파일 포지션값
                 MusicListUtil.stopSong();
-                break;
-
-            case "sleepyStart":
                 //content = 녹음파일 포지션값
-                MusicListUtil.startSong(context, buffer1);
+//                passMessageToActivity("stop");
                 break;
-            case "sleepyResume":
-                //content = 녹음파일 포지션값
-                MusicListUtil.resumeSong();
-                break;
-
-            case "sleepyStop":
-                //content = 녹음파일 포지션값
-                MusicListUtil.stopSong();
-                break;
-
-            case "anxietyStart":
-                //content = 녹음파일 포지션값
-                MusicListUtil.startSong(context, buffer1);
-                break;
-            case "anxietyResume":
-                //content = 녹음파일 포지션값
-                MusicListUtil.resumeSong();
-                break;
-
-            case "anxietyStop":
-                //content = 녹음파일 포지션값
-                MusicListUtil.stopSong();
-                break;
-
-            case "sadStart":
-                //content = 녹음파일 포지션값
-                MusicListUtil.startSong(context, buffer1);
-                break;
-            case "sadResume":
-                //content = 녹음파일 포지션값
-                MusicListUtil.resumeSong();
-                break;
-            case "sadStop":
-                //content = 녹음파일 포지션값
-                MusicListUtil.stopSong();
-                break;
-
-
             /*
               녹음 프로토콜
 
@@ -126,6 +87,8 @@ public class Netty_DuriHandler extends SimpleChannelInboundHandler<ByteBuf> {
     		*/
             case "latlon":
                 //content = 위도/경도
+
+
                 break;
 
         }
@@ -137,4 +100,11 @@ public class Netty_DuriHandler extends SimpleChannelInboundHandler<ByteBuf> {
         cause.printStackTrace();
         ctx.close();
     }
+
+//    private void passMessageToActivity(String message){
+//        Intent intent = new Intent();
+//        intent.setAction(SENDMESAGGE);
+//        intent.putExtra("message",message);
+//        context.sendBroadcast(intent);
+//    }
 }

@@ -16,13 +16,9 @@ import android.util.Log;
 import android.widget.Toast;
 
 import java.util.Timer;
-import java.util.TimerTask;
-import android.content.Intent;
-import android.media.MediaPlayer;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
+
     static Netty_DuriClient netty;
     static MediaPlayer mediaPlayer;
     public static char ascii = (char)0x2593;
@@ -35,15 +31,13 @@ public class MainActivity extends AppCompatActivity {
     double Lat;
     double Lon;
 
+//    MyReceiver myReceiver;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
-
         netty = new Netty_DuriClient(this);
         netty.start();
 
@@ -58,19 +52,26 @@ public class MainActivity extends AppCompatActivity {
         this.startService(serviceIntent);
         new MusicListUtil();
 
-//        MusicListUtil.current_check=true;
-//        mediaPlayer = MediaPlayer.create(this , MusicListUtil.신나는음악리스트.get(0).sound);
-//        mediaPlayer.start(); // no need to call prepare() ; create() does that for you
+        MusicListUtil.current_check=true;
+        mediaPlayer = MediaPlayer.create(this , MusicListUtil.신나는음악리스트.get(0).sound);
+        mediaPlayer.start(); // no need to call prepare() ; create() does that for you
+
+//        registerReceiver();
+
+    }
 
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+//        registerReceiver();
     }
 
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
+//        unregisterReceiver(myReceiver);
     }
 
 
@@ -143,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
                 Lat=kalmanLatLong.get_lat();
                 Lon=kalmanLatLong.get_lng();
 
-                MainActivity.netty.sendmessage("latlon"+MainActivity.ascii+Lat+MainActivity.ascii+Lon);
+//                MainActivity.netty.sendmessage("latlon"+MainActivity.ascii+Lat+MainActivity.ascii+Lon);
 
       //Toast.makeText(MainActivity.this, "lat : " + location.getLatitude() + "long"+ location.getLongitude(), Toast.LENGTH_SHORT).show();
                   Log.d("gps","lat : " + Lat + "long"+ Lon);
@@ -163,11 +164,40 @@ public class MainActivity extends AppCompatActivity {
     };
 
 
+//    private void registerReceiver(){
+//        //Register BroadcastReceiver
+//        //to receive event from our service
+//        myReceiver = new MyReceiver();
+//        IntentFilter intentFilter = new IntentFilter();
+//        intentFilter.addAction(Netty_DuriHandler.SENDMESAGGE);
+//        registerReceiver(myReceiver, intentFilter);
+//    }
+
+//    private class MyReceiver extends BroadcastReceiver {
+
+//        @Override
+//        public void onReceive(Context arg0, Intent arg1) {
+//            //verify if the extra var exist
+//            System.out.println(arg1.hasExtra("message")); // true or false
+//            //another example...
+//            System.out.println(arg1.getExtras().containsKey("message")); // true or false
+//            //if var exist only print or do some stuff
+//            if (arg1.hasExtra("message")) {
+//                //do what you want to
+//                if (arg1.getStringExtra("message").equals("start")) {
+//                    Toast.makeText(MainActivity.this, "시작", Toast.LENGTH_SHORT).show();
+//                }else if (arg1.getStringExtra("message").equals("resume")){
+//                   Toast.makeText(MainActivity.this, "재시작", Toast.LENGTH_SHORT).show();
+//                }else if(arg1.getStringExtra("message").equals("stop")){
+//                    Toast.makeText(MainActivity.this, "일시정지", Toast.LENGTH_SHORT).show();
+//                }
+//
+//
+//            }
+//        }
+
+    }
 
 
 
 
-
-
-
-}
